@@ -1,0 +1,38 @@
+var lengthOfLongestSubstring = function(s) {
+  if (!s) {
+    return 0;
+  }
+  let start = 0; // Start index
+  let end = 0; // End index
+  let maxLength = 0; // Max length of substring
+  const uniqueCharacters = new Set();
+    while (end < s.length) {
+      if(!uniqueCharacters.has(s[end])) {
+        uniqueCharacters.add(s[end]);
+        end++;
+        maxLength = Math.max(maxLength, uniqueCharacters.size);
+      }
+      else {
+        uniqueCharacters.delete(s[start]);
+        start++;
+      }
+    }
+  return maxLength;
+};
+
+console.log("Hello World");
+var num = 0;
+let word = "abcabcbb";
+console.log("The word to be used is:", word);
+num = lengthOfLongestSubstring(word);
+console.log("The longest substring without repeating characters, of this word is:", num);
+
+word = "pwwkew";
+console.log("Let's try another word. The new word to be used is:", word);
+num = lengthOfLongestSubstring(word);
+console.log("The longest substring without repeating characters, of this word is:", num);
+
+word = "cccc";
+console.log("One more time. The new word to be used is:", word);
+num = lengthOfLongestSubstring(word);
+console.log("The longest substring without repeating characters, of this word is:", num);
